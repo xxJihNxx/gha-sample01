@@ -30,4 +30,16 @@ jobs:
           cd kustomize/overlays/production
           kustomize edit set image nginx:$NGINX_VERSION
           cat kustomization.yaml
+
+      - name: Commit kustomization
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -a -m "nginx:$NGINX_VERSION"
       
+      - name: Git push changes to main
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          force: true

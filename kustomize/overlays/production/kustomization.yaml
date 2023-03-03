@@ -2,7 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: production
 resources:
-  - ../../base
+- ../../base
 replicas:
-- name: deployment
-  count: 5
+- count: 5
+  name: deployment
+images:
+- name: nginx
+  newTag: 1.23.3

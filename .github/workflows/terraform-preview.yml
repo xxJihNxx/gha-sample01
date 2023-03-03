@@ -23,4 +23,5 @@ jobs:
       - name: Set image tag
         run: |
           cd kustomize/overlays/production
-          touch test.text
+          kustomize edit set image nginx:1.23.3
+          cat kustomization.yaml

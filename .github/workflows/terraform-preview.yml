@@ -31,10 +31,9 @@ jobs:
           kustomize edit set image nginx:$NGINX_VERSION
           cat kustomization.yaml
       
-      - name: Configure & Git push kustomization
-        run: |
-          git config --global user.email ${{ secrets.EMAIL}}
-          git config --global user.name ${{ secrets.NAME}}
-          git add .
-          git commit -m "nginx:$NGINX_VERSION"
-          git push 
+       - name: Push changes
+         uses: ad-m/github-push-action@master
+         with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           branch: main
+           force: true

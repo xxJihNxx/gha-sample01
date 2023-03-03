@@ -6,6 +6,7 @@ on:
       - main
     path:
       - .github/workflows/**
+      - "**/*.yaml"
 
 permissions:
   id-token: write
@@ -16,5 +17,5 @@ jobs:
     name: "Preview"
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Hello World"
+      - name: Checkout
+        uses: actions/checkout@v3

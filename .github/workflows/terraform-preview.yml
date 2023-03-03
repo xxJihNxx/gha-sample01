@@ -1,0 +1,20 @@
+name: "terraform preview"
+
+on:
+  push:
+    branches:
+      - main
+    path:
+      - .github/workflows/**
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  preview:
+    name: "Preview"
+    runs-on: ubuntu-latest
+    step:
+      - run: |
+        echo "Hello World"

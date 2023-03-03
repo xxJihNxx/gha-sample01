@@ -12,6 +12,9 @@ permissions:
   id-token: write
   contents: read
 
+env: 
+  NGINX_VERSION: 1.23.3
+
 jobs:
   preview:
     name: "Preview"
@@ -23,5 +26,11 @@ jobs:
       - name: Set image tag
         run: |
           cd kustomize/overlays/production
-          kustomize edit set image nginx:1.23.3
+          kustomize edit set image nginx:$NGINX_VERSION
           cat kustomization.yaml
+      
+      - name: Commit kustomization
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -a -m "nginx:$NGINX_VERSION"

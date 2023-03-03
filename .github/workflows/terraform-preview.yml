@@ -35,4 +35,4 @@ jobs:
           git config --global user.name ${{ secrets.NAME}}
           git add .
           git commit -m "nginx:$NGINX_VERSION"
-          git push origin main
+          git push 

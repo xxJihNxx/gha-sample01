@@ -34,3 +34,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -a -m "nginx:$NGINX_VERSION"
+      
+      - name: Git push kustomization
+        run: |
+          git push
